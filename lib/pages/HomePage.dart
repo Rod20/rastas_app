@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rastas_app/pages/Page1.dart';
-import 'package:rastas_app/pages/Page2.dart';
-import 'package:rastas_app/pages/Page3.dart';
+import 'package:rastas_app/pages/DisenioCualitativo.dart';
+import 'package:rastas_app/pages/DisenioCuantitativo.dart';
+import 'package:rastas_app/pages/Perfil.dart';
+import 'package:rastas_app/pages/PrincipiosDeLaInvestigacion.dart';
+import 'package:rastas_app/pages/Salida.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -12,12 +14,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int nroPagina = 0;
+  int nropgaux=0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _appBar(),
-      body: _cuerpo(nroPagina),
+      body: (nropgaux!=0)?_cuerpoAux(nropgaux):_cuerpo(nroPagina),
       bottomNavigationBar: _bottom(),
     );
   }
@@ -75,11 +78,27 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _cuerpo(int paginaActual) {
+    print("Cuerpos");
+    print(paginaActual);
     switch(paginaActual){
-      case 0: return Page1();
-      case 1: return Page2();
-      case 2: return Page3();
-      default: return Page1();
+      case 0: return pageOne(); // HOME
+      case 1: return Salida(); //  SALIDA
+      case 2: return Perfil(); // PERFIL
+      default: return _cuerpoAux(paginaActual);
+      
+    }
+  }
+  Widget _cuerpoAux(int paginaActual) {
+    print("Cuerpo Aux");
+    print(paginaActual);
+    switch(paginaActual){
+      // 3 Principios de la investigacion
+      case 3: return PrincipiosDeLaInvestigacion();
+      // 4 Diseño cuantitativo
+      case 4: return DisenioCuantitativo();
+      // 5 Diseño cualitativo
+      case 5: return DisenioCualitativo();
+      default: return pageOne();
       
     }
   }
@@ -91,6 +110,7 @@ class _HomePageState extends State<HomePage> {
       onTap: (index){
         setState(() {
           nroPagina = index;
+          nropgaux = 0;
         });
       },
       items: [
@@ -99,6 +119,73 @@ class _HomePageState extends State<HomePage> {
         BottomNavigationBarItem(icon: SvgPicture.asset('lib/src/icons/icono_persona.svg',height: 40.0,),title: Container()),
       ],
       
+    );
+  }
+
+    Widget _item(String texto,int i){
+    final _bxdecoration = BoxDecoration(
+      color: Colors.blue[900],
+      borderRadius: BorderRadius.horizontal(left: Radius.circular(30.0),right: Radius.circular(5.0)),
+      gradient: LinearGradient(
+        colors: [
+          Colors.blue,Colors.cyan[200]
+        ],
+        begin: FractionalOffset.topCenter,
+        end: FractionalOffset.bottomCenter
+      )
+    );
+    return Stack(
+
+      children: <Widget>[
+        Positioned(
+          right: 30.0,
+          child: GestureDetector(
+            onTap: (){
+              //print("presiona");
+              setState(() {
+                nropgaux = i;
+                _cuerpoAux(nropgaux);
+              });
+            },
+            child: Container(
+              decoration: _bxdecoration,
+              padding: EdgeInsets.symmetric(vertical: 10.0),
+              height: 65.0,
+              width: 200.0,
+              //color: Colors.blue,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(texto,style: TextStyle(color: Colors.white),textAlign: TextAlign.center,),
+                  //Text("investigacion",style: TextStyle(color: Colors.white),)
+                ],
+              ),
+            ),
+          ),
+        ),
+        
+         Container(
+           child: Image.asset('lib/src/logos/dr.png',height: 70.0,),
+           //color: Colors.red,
+           width: 150.0,
+        ),
+      ],
+    );
+  }
+
+  Widget pageOne(){
+    return Center(
+      child: ListView(
+
+        children: <Widget>[
+          SizedBox(height: 40.0),
+          _item("Principios de la investigacion",3),
+          SizedBox(height: 20.0),
+          _item("Diseño cuantitativo",4),
+          SizedBox(height: 20.0),
+          _item("Diseño Cualitativo",5)
+        ],
+      ),
     );
   }
 }
