@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rastas_app/pages/CuantoAprendiste.dart';
 import 'package:rastas_app/pages/DisenioCualitativo.dart';
 import 'package:rastas_app/pages/DisenioCuantitativo.dart';
 import 'package:rastas_app/pages/Perfil.dart';
 import 'package:rastas_app/pages/PrincipiosDeLaInvestigacion.dart';
 import 'package:rastas_app/pages/Salida.dart';
+import 'package:rastas_app/pages/VerbosPage.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -98,6 +100,10 @@ class _HomePageState extends State<HomePage> {
       case 4: return DisenioCuantitativo();
       // 5 Diseño cualitativo
       case 5: return DisenioCualitativo();
+      // 6 Verbos
+      case 6: return VerbosPage();
+      // 7 Cuanto Aprendiste
+      case 7: return CuantoAprendistePage();
       default: return pageOne();
       
     }
@@ -176,14 +182,91 @@ class _HomePageState extends State<HomePage> {
   Widget pageOne(){
     return Center(
       child: ListView(
-
+        
         children: <Widget>[
           SizedBox(height: 40.0),
           _item("Principios de la investigacion",3),
           SizedBox(height: 20.0),
           _item("Diseño cuantitativo",4),
           SizedBox(height: 20.0),
-          _item("Diseño Cualitativo",5)
+          _item("Diseño Cualitativo",5),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: <Widget>[
+              _btnItem2("Verbos",6),
+              _btnItem2("Cuanto aprendiste?",7),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+    Widget _btnItem2(String txt,int i) {
+    final _bxdecoration = BoxDecoration(
+      color: Colors.blue[100],
+      borderRadius: BorderRadius.circular(10.0),
+      gradient: LinearGradient(
+        colors: [
+          Colors.blue[100],Colors.cyan[200]
+        ],
+        begin: FractionalOffset.topCenter,
+        end: FractionalOffset.bottomCenter
+      )
+    );
+    return Container(
+      margin: EdgeInsets.only(right: 30.0),
+      child: Stack(
+        children: <Widget>[
+          Positioned(
+            //right: 30.0,
+            child: GestureDetector(
+              onTap: (){
+              //print("presiona");
+              setState(() {
+                nropgaux = i;
+                _cuerpoAux(nropgaux);
+              });
+              },
+              child: Container(
+                decoration: _bxdecoration,
+                //color: Colors.blueAccent,
+                margin: EdgeInsets.only(left: 30.0,top: 10.0),
+                padding: EdgeInsets.symmetric( horizontal: 15.0),
+                height: 35.0,
+                //width: double.minPositive,
+                //color: Colors.blue,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(txt,style: TextStyle(color: Colors.black87,fontSize: 12.0),textAlign: TextAlign.center,),
+                    //Text("investigacion",style: TextStyle(color: Colors.white),)
+                  ],
+                ),
+              ),
+            ),
+          ),
+          CircleAvatar(
+            backgroundColor: Colors.greenAccent[700],
+             child: Container(),
+             radius: 21.0,
+             //color: Colors.red,
+//           width: 150.0,
+
+            ),
+          Positioned(
+            left: 1.0,
+            top: 1.0,
+            child: CircleAvatar(
+              
+              backgroundColor: Colors.white,
+               child: Image.asset('lib/src/logos/personaLupa.png',fit: BoxFit.cover,),
+               //color: Colors.red,
+//           width: 150.0,
+
+              ),
+          ),
+           
         ],
       ),
     );
