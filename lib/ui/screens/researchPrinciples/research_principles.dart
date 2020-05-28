@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class PrincipiosDeLaInvestigacion extends StatelessWidget {
+class ResearchPrinciples extends StatelessWidget {
 
 
   @override

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rastas_app/pages/CuantoAprendiste.dart';
-import 'package:rastas_app/pages/DisenioCualitativo.dart';
-import 'package:rastas_app/pages/DisenioCuantitativo.dart';
-import 'package:rastas_app/pages/Perfil.dart';
-import 'package:rastas_app/pages/PrincipiosDeLaInvestigacion.dart';
-import 'package:rastas_app/pages/Salida.dart';
-import 'package:rastas_app/pages/VerbosPage.dart';
+import 'package:rastas_app/ui/screens/cuantoAprendiste/cuanto_aprendiste.dart';
+import 'package:rastas_app/ui/screens/qualitativeDesign/disenio_cualitativo.dart';
+import 'package:rastas_app/ui/screens/quantitativeDesign/disenio_cuantitativo.dart';
+import 'package:rastas_app/ui/screens/profile/profile.dart';
+import 'package:rastas_app/ui/screens/researchPrinciples/research_principles.dart';
+import 'package:rastas_app/ui/screens/exit/exit.dart';
+import 'package:rastas_app/ui/screens/verbs/verbs.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -84,8 +84,8 @@ class _HomePageState extends State<HomePage> {
     print(paginaActual);
     switch(paginaActual){
       case 0: return pageOne(); // HOME
-      case 1: return Salida(); //  SALIDA
-      case 2: return Perfil(); // PERFIL
+      case 1: return Exit(); //  SALIDA
+      case 2: return Profile(); // PERFIL
       default: return _cuerpoAux(paginaActual);
       
     }
@@ -95,15 +95,15 @@ class _HomePageState extends State<HomePage> {
     print(paginaActual);
     switch(paginaActual){
       // 3 Principios de la investigacion
-      case 3: return PrincipiosDeLaInvestigacion();
+      case 3: return ResearchPrinciples();
       // 4 Diseño cuantitativo
       case 4: return DisenioCuantitativo();
       // 5 Diseño cualitativo
       case 5: return DisenioCualitativo();
       // 6 Verbos
-      case 6: return VerbosPage();
+      case 6: return Verbs();
       // 7 Cuanto Aprendiste
-      case 7: return CuantoAprendistePage();
+      case 7: return CuantoAprendiste();
       default: return pageOne();
       
     }
