@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
         child: Row(
 
           children: <Widget>[
-            Image.asset('lib/src/logos/dr.png'),
+            Image.asset('assets/logos/dr.png'),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -120,9 +120,9 @@ class _HomePageState extends State<HomePage> {
         });
       },
       items: [
-        BottomNavigationBarItem(icon: SvgPicture.asset('lib/src/icons/icono.svg',height: 40.0,),title: Container()),
-        BottomNavigationBarItem(icon: SvgPicture.asset('lib/src/icons/icono_puerta.svg',height: 40.0,),title: Container()),
-        BottomNavigationBarItem(icon: SvgPicture.asset('lib/src/icons/icono_persona.svg',height: 40.0,),title: Container()),
+        BottomNavigationBarItem(icon: SvgPicture.asset('assets/icons/icono.svg',height: 40.0,),title: Container()),
+        BottomNavigationBarItem(icon: SvgPicture.asset('assets/icons/icono_puerta.svg',height: 40.0,),title: Container()),
+        BottomNavigationBarItem(icon: SvgPicture.asset('assets/icons/icono_persona.svg',height: 40.0,),title: Container()),
       ],
       
     );
@@ -171,7 +171,7 @@ class _HomePageState extends State<HomePage> {
         ),
         
          Container(
-           child: Image.asset('lib/src/logos/dr.png',height: 70.0,),
+           child: Image.asset('assets/logos/dr.png',height: 70.0,),
            //color: Colors.red,
            width: 150.0,
         ),
@@ -260,7 +260,7 @@ class _HomePageState extends State<HomePage> {
             child: CircleAvatar(
               
               backgroundColor: Colors.white,
-               child: Image.asset('lib/src/logos/personaLupa.png',fit: BoxFit.cover,),
+               child: Image.asset('assets/logos/personaLupa.png',fit: BoxFit.cover,),
                //color: Colors.red,
 //           width: 150.0,
 
