@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rastas_app/ui/resources/app_colors.dart';
 import 'package:rastas_app/ui/screens/cuantoAprendiste/cuanto_aprendiste.dart';
 import 'package:rastas_app/ui/screens/qualitativeDesign/disenio_cualitativo.dart';
 import 'package:rastas_app/ui/screens/quantitativeDesign/disenio_cuantitativo.dart';
@@ -32,35 +33,24 @@ class _HomePageState extends State<HomePage> {
       inherit: true,
       fontSize: 15.0,
       color: Colors.white,
-          shadows: [
-            Shadow( // bottomLeft
-        offset: Offset(-1.5, -1.5),
-        color: Colors.blue
-            ),
-            Shadow( // bottomRight
-        offset: Offset(1.5, -1.5),
-        color: Colors.blue
-            ),
-            Shadow( // topRight
-        offset: Offset(1.5, 1.5),
-        color: Colors.blue
-            ),
-            Shadow( // topLeft
-        offset: Offset(-1.5, 1.5),
-        color: Colors.blue
-            ),
-        ],
       );
-      final _bxdecoration = BoxDecoration(boxShadow: [BoxShadow(color: Colors.black,offset: Offset(1.5, 1.5))],color: Color.fromRGBO(226,225,223, 1.0));
     return PreferredSize(
-      preferredSize: Size.fromHeight(50.0),
+      preferredSize: Size.fromHeight(54.0),
       child: Container(
-        decoration: _bxdecoration,
+        decoration: BoxDecoration(
+            color: darkAccent,
+            gradient: LinearGradient(
+                colors: [
+                  darkAccent,secondBadgeColor
+                ],
+                begin: FractionalOffset.topCenter,
+                end: FractionalOffset.bottomCenter
+            )
+        ),
         //color: Color.fromRGBO(226,225,223, 1.0),
         padding: EdgeInsets.only(bottom: 20.0,left: 20.0,right: 20.0,top: 25.0),
         width: double.infinity,
         child: Row(
-
           children: <Widget>[
             Image.asset('assets/logos/dr.png'),
             Expanded(
@@ -74,8 +64,7 @@ class _HomePageState extends State<HomePage> {
             )
           ],
         )
-        )
-      
+      )
     );
   }
 
@@ -111,20 +100,33 @@ class _HomePageState extends State<HomePage> {
 
   Widget _bottom() {
     return BottomNavigationBar(
-      
       currentIndex: nroPagina,
+      selectedItemColor: lightPrimary,
+      backgroundColor: darkAccent,
+      unselectedItemColor: lightPrimary,
+      iconSize: 24.0,
+      selectedFontSize: 14.0,
+      unselectedFontSize: 10.0,
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          title: Text('Home'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.account_balance),
+          title: Text('Info'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          title: Text('Perfil'),
+        ),
+      ],
       onTap: (index){
         setState(() {
           nroPagina = index;
           nropgaux = 0;
         });
       },
-      items: [
-        BottomNavigationBarItem(icon: SvgPicture.asset('assets/icons/icono.svg',height: 40.0,),title: Container()),
-        BottomNavigationBarItem(icon: SvgPicture.asset('assets/icons/icono_puerta.svg',height: 40.0,),title: Container()),
-        BottomNavigationBarItem(icon: SvgPicture.asset('assets/icons/icono_persona.svg',height: 40.0,),title: Container()),
-      ],
-      
     );
   }
 

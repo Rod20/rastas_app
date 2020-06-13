@@ -13,20 +13,22 @@ class SocialNetworkProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     mTabBloc.changeCurrentIndex(_socialNetworkTabIndex);
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        _socialMedia(context,"assets/icons/social/facebook.svg","www.facebook.com"),
-        _socialMedia(context,"assets/icons/social/whatsapp.svg","+591 77 967 277"),
-        _socialMedia(context,"assets/icons/social/youtube.svg","www.youtube.com"),
-        _socialMedia(context,"assets/icons/social/instagram.svg","www.instagram.com"),
-        _socialMedia(context,"assets/icons/social/twitter.svg","www.twitter.com"),
-        _socialMedia(context,"assets/icons/social/linkedin.svg","www.linkedin.com"),
-        _socialMedia(context,"assets/icons/social/steam.svg","www.steam.com"),
-        _socialMedia(context,"assets/icons/social/pinterest.svg","www.pinterest.com"),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          _socialMedia(context,"assets/icons/social/facebook.svg","www.facebook.com"),
+          _socialMedia(context,"assets/icons/social/whatsapp.svg","+591 77 967 277"),
+          _socialMedia(context,"assets/icons/social/youtube.svg","www.youtube.com"),
+          _socialMedia(context,"assets/icons/social/instagram.svg","www.instagram.com"),
+          _socialMedia(context,"assets/icons/social/twitter.svg","www.twitter.com"),
+          _socialMedia(context,"assets/icons/social/linkedin.svg","www.linkedin.com"),
+          _socialMedia(context,"assets/icons/social/steam.svg","www.steam.com"),
+          _socialMedia(context,"assets/icons/social/pinterest.svg","www.pinterest.com"),
+        ],
+      ),
     );
   }
 
