@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
   Widget _appBar(){
     final _txtStyle = TextStyle(
       inherit: true,
-      fontSize: 20.0,
+      fontSize: 15.0,
       color: Colors.white,
           shadows: [
             Shadow( // bottomLeft
@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
       );
       final _bxdecoration = BoxDecoration(boxShadow: [BoxShadow(color: Colors.black,offset: Offset(1.5, 1.5))],color: Color.fromRGBO(226,225,223, 1.0));
     return PreferredSize(
-      preferredSize: Size.fromHeight(80.0), 
+      preferredSize: Size.fromHeight(50.0),
       child: Container(
         decoration: _bxdecoration,
         //color: Color.fromRGBO(226,225,223, 1.0),

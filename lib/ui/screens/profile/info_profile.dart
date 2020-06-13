@@ -13,7 +13,7 @@ class InfoProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     mTabBloc.changeCurrentIndex(_infoTabIndex);
     return Center(
-      child: Text("Hola Mac :v"),
+      child: Text("Aqui va la info we"),
     );
   }
 }
