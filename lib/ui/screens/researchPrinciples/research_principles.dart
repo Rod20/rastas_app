@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 
 class ResearchPrinciples extends StatelessWidget {
 
-
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("Principios"),
+    return Scaffold(
+      body: Center(
+        child: Text(
+            "Acá va los principios de la investigacion ctmre! xD"
+        ),
+      ),
     );
   }
 

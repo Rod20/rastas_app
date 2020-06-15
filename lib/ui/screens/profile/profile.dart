@@ -60,6 +60,8 @@ class _ProfileState extends State<Profile>
       labelPadding: EdgeInsets.only(right: 2.0, left: 2.0),
       tabs: _tabTitles(context),
       controller: _tabController,
+      indicatorColor: lightPrimary,
+      labelColor: lightBG,
     );
   }
 
@@ -86,7 +88,7 @@ class _ProfileState extends State<Profile>
   }
 
   Widget tabProfile(){
-    final double heightScreen = 300.0;
+    final double heightScreen = 250.0;
     final int numberOfTabs = 2;
 
     return DefaultTabController(
@@ -110,7 +112,7 @@ class _ProfileState extends State<Profile>
                   opacity: 1.0,
                   child: ListView(
                     children: <Widget>[
-                      _getProfileAppbar(context),
+                      //_getProfileAppbar(context),
                       _getProfileInfo(context)
                     ],
                   ),
@@ -165,6 +167,7 @@ class _ProfileState extends State<Profile>
   Widget _getProfileInfo(BuildContext context) {
 
     return Container(
+      padding: EdgeInsets.only(top: 16.0),
       color: Colors.transparent,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
