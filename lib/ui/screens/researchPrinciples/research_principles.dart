@@ -1,57 +1,56 @@
 import 'package:flutter/material.dart';
+import 'package:rastas_app/ui/widgets/toolbar_header.dart';
 
 class ResearchPrinciples extends StatelessWidget {
+
+  String _title = "Teoría del diseño cuantitativo";
+  String _concept = """Los estudios cuantitativos siguen un patrón predecible y estructurado el proceso. En una investigación cualitativa se pretende explicar y predecir los fenómenos investigados, buscando regularidades y relaciones causales entre elementos. (p.18)
+
+La investigación cuantitativa, conocida también como metodología cuantitativa, es un modelo de investigación basado en el paradigma positivista, cuyo propósito es hallar leyes generales que expliquen la naturaleza de su objeto de estudio a partir de la observación, la comprobación y la experiencia. Esto es, a partir del análisis de resultados experimentales que arrojan representaciones numéricas o estadísticas verificables.
+
+Es por ello que, tanto los estudios científicos positivistas como la investigación cuantitativa aplicada a las ciencias sociales, se centran en la importancia de la medición y toda clase de datos cuantificables.""";
 
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("Principios"),
+    return Scaffold(
+      appBar: ToolbarHeader(
+          mToolbarName: "Principios De La Investigación"
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              _titleText(_title, context),
+              _bodyText(_concept, context),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
-//  Widget _item(String texto){
-//    final _bxdecoration = BoxDecoration(
-//      color: Colors.blue[900],
-//      borderRadius: BorderRadius.horizontal(left: Radius.circular(30.0),right: Radius.circular(5.0)),
-//      gradient: LinearGradient(
-//        colors: [
-//          Colors.blue,Colors.cyan[200]
-//        ],
-//        begin: FractionalOffset.topCenter,
-//        end: FractionalOffset.bottomCenter
-//      )
-//    );
-//    return Stack(//
+  Widget _titleText(String title, BuildContext context){
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Center(
+        child: Text(
+          title,
+          style: Theme.of(context).textTheme.title.merge(TextStyle(fontSize: 18.0)),
+        ),
+      ),
+    );
+  }
 
-//      children: <Widget>[
-//        Positioned(
-//          right: 30.0,
-//          child: GestureDetector(
-//            onTap: (){print("presiona");},
-//            child: Container(
-//              decoration: _bxdecoration,
-//              padding: EdgeInsets.symmetric(vertical: 10.0),
-//              height: 65.0,
-//              width: 200.0,
-//              //color: Colors.blue,
-//              child: Column(
-//                mainAxisAlignment: MainAxisAlignment.center,
-//                children: <Widget>[
-//                  Text(texto,style: TextStyle(color: Colors.white),textAlign: TextAlign.center,),
-//                  //Text("investigacion",style: TextStyle(color: Colors.white),)
-//                ],
-//              ),
-//            ),
-//          ),
-//        ),
-//        
-//         Container(
-//           child: Image.asset('lib/src/logos/dr.png',height: 70.0,),
-//           //color: Colors.red,
-//           width: 150.0,
-//        ),
-//      ],
-//    );
-//  }
+  Widget _bodyText(String title, BuildContext context){
+    return Padding(
+      padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+      child: Text(
+        title,
+        style: Theme.of(context).textTheme.subtitle.merge(TextStyle(fontSize: 14.0)),
+      ),
+    );
+  }
 }

@@ -1,200 +1,80 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rastas_app/ui/resources/app_colors.dart';
 import 'package:rastas_app/ui/screens/cuantoAprendiste/cuanto_aprendiste.dart';
 import 'package:rastas_app/ui/screens/qualitativeDesign/disenio_cualitativo.dart';
 import 'package:rastas_app/ui/screens/quantitativeDesign/disenio_cuantitativo.dart';
-import 'package:rastas_app/ui/screens/profile/profile.dart';
 import 'package:rastas_app/ui/screens/researchPrinciples/research_principles.dart';
-import 'package:rastas_app/ui/screens/exit/exit.dart';
 import 'package:rastas_app/ui/screens/verbs/verbs.dart';
 
-class HomePage extends StatefulWidget {
-
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  int nroPagina = 0;
-  int nropgaux=0;
-
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: _appBar(),
-      body: (nropgaux!=0)?_cuerpoAux(nropgaux):_cuerpo(nroPagina),
-      bottomNavigationBar: _bottom(),
-    );
-  }
-
-  Widget _appBar(){
-    final _txtStyle = TextStyle(
-      inherit: true,
-      fontSize: 15.0,
-      color: Colors.white,
-          shadows: [
-            Shadow( // bottomLeft
-        offset: Offset(-1.5, -1.5),
-        color: Colors.blue
-            ),
-            Shadow( // bottomRight
-        offset: Offset(1.5, -1.5),
-        color: Colors.blue
-            ),
-            Shadow( // topRight
-        offset: Offset(1.5, 1.5),
-        color: Colors.blue
-            ),
-            Shadow( // topLeft
-        offset: Offset(-1.5, 1.5),
-        color: Colors.blue
-            ),
-        ],
-      );
-      final _bxdecoration = BoxDecoration(boxShadow: [BoxShadow(color: Colors.black,offset: Offset(1.5, 1.5))],color: Color.fromRGBO(226,225,223, 1.0));
-    return PreferredSize(
-      preferredSize: Size.fromHeight(50.0),
-      child: Container(
-        decoration: _bxdecoration,
-        //color: Color.fromRGBO(226,225,223, 1.0),
-        padding: EdgeInsets.only(bottom: 20.0,left: 20.0,right: 20.0,top: 25.0),
-        width: double.infinity,
-        child: Row(
-
-          children: <Widget>[
-            Image.asset('assets/logos/dr.png'),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                Text("Guia basica de",style: _txtStyle,),
-                Text("investigacion",style: _txtStyle,)
-              ],
-          ),
-            )
-          ],
+    return SafeArea(
+        child: Scaffold(
+          body: pageOne(context),
         )
-        )
-      
     );
   }
 
-  Widget _cuerpo(int paginaActual) {
-    print("Cuerpos");
-    print(paginaActual);
-    switch(paginaActual){
-      case 0: return pageOne(); // HOME
-      case 1: return Exit(); //  SALIDA
-      case 2: return Profile(); // PERFIL
-      default: return _cuerpoAux(paginaActual);
-      
-    }
-  }
-  Widget _cuerpoAux(int paginaActual) {
-    print("Cuerpo Aux");
-    print(paginaActual);
-    switch(paginaActual){
-      // 3 Principios de la investigacion
-      case 3: return ResearchPrinciples();
-      // 4 Diseño cuantitativo
-      case 4: return DisenioCuantitativo();
-      // 5 Diseño cualitativo
-      case 5: return DisenioCualitativo();
-      // 6 Verbos
-      case 6: return Verbs();
-      // 7 Cuanto Aprendiste
-      case 7: return CuantoAprendiste();
-      default: return pageOne();
-      
-    }
-  }
-
-  Widget _bottom() {
-    return BottomNavigationBar(
-      
-      currentIndex: nroPagina,
-      onTap: (index){
-        setState(() {
-          nroPagina = index;
-          nropgaux = 0;
-        });
-      },
-      items: [
-        BottomNavigationBarItem(icon: SvgPicture.asset('assets/icons/icono.svg',height: 40.0,),title: Container()),
-        BottomNavigationBarItem(icon: SvgPicture.asset('assets/icons/icono_puerta.svg',height: 40.0,),title: Container()),
-        BottomNavigationBarItem(icon: SvgPicture.asset('assets/icons/icono_persona.svg',height: 40.0,),title: Container()),
-      ],
-      
-    );
-  }
-
-    Widget _item(String texto,int i){
+  Widget _item(String texto, String page, BuildContext context){
     final _bxdecoration = BoxDecoration(
-      color: Colors.blue[900],
-      borderRadius: BorderRadius.horizontal(left: Radius.circular(30.0),right: Radius.circular(5.0)),
-      gradient: LinearGradient(
-        colors: [
-          Colors.blue,Colors.cyan[200]
-        ],
-        begin: FractionalOffset.topCenter,
-        end: FractionalOffset.bottomCenter
-      )
+        color: Colors.blue[900],
+        borderRadius: BorderRadius.horizontal(left: Radius.circular(30.0),right: Radius.circular(5.0)),
+        gradient: LinearGradient(
+            colors: [
+              darkAccent,lightAccent
+            ],
+            begin: FractionalOffset.topCenter,
+            end: FractionalOffset.bottomCenter
+        )
     );
-    return Stack(
+    return InkWell(
+      onTap: (){
+        Navigator.of(context).pushNamed(page);
+      },
+      child: Row(
 
-      children: <Widget>[
-        Positioned(
-          right: 30.0,
-          child: GestureDetector(
-            onTap: (){
-              //print("presiona");
-              setState(() {
-                nropgaux = i;
-                _cuerpoAux(nropgaux);
-              });
-            },
-            child: Container(
-              decoration: _bxdecoration,
-              padding: EdgeInsets.symmetric(vertical: 10.0),
-              height: 65.0,
-              width: 200.0,
-              //color: Colors.blue,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(texto,style: TextStyle(color: Colors.white),textAlign: TextAlign.center,),
-                  //Text("investigacion",style: TextStyle(color: Colors.white),)
-                ],
-              ),
+        children: <Widget>[
+          Container(
+            child: Image.asset('assets/logos/dr.png',height: 70.0,),
+            //color: Colors.red,
+            width: 150.0,
+          ),
+          Container(
+            decoration: _bxdecoration,
+            padding: EdgeInsets.symmetric(vertical: 10.0),
+            height: 65.0,
+            width: 200.0,
+            //color: Colors.blue,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(texto,style: TextStyle(color: Colors.white),textAlign: TextAlign.center,),
+                //Text("investigacion",style: TextStyle(color: Colors.white),)
+              ],
             ),
           ),
-        ),
-        
-         Container(
-           child: Image.asset('assets/logos/dr.png',height: 70.0,),
-           //color: Colors.red,
-           width: 150.0,
-        ),
-      ],
+        ],
+      ),
     );
   }
 
-  Widget pageOne(){
+  Widget pageOne(BuildContext context){
     return Center(
       child: ListView(
-        
+
         children: <Widget>[
           SizedBox(height: 40.0),
-          _item("Principios de la investigacion",3),
+          _item("Principios de la investigacion",'res_prin',context),
           SizedBox(height: 20.0),
-          _item("Diseño cuantitativo",4),
+          _item("Diseño cuantitativo",'des_quan',context),
           SizedBox(height: 20.0),
-          _item("Diseño Cualitativo",5),
+          _item("Diseño Cualitativo",'des_qual',context),
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
-              _btnItem2("Verbos",6),
-              _btnItem2("Cuanto aprendiste?",7),
+              _btnItem2("Verbos",'verbs',context),
+              _btnItem2("Cuanto aprendiste?",'learning',context),
             ],
           ),
         ],
@@ -202,17 +82,17 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-    Widget _btnItem2(String txt,int i) {
+  Widget _btnItem2(String txt, String page,BuildContext context) {
     final _bxdecoration = BoxDecoration(
-      color: Colors.blue[100],
-      borderRadius: BorderRadius.circular(10.0),
-      gradient: LinearGradient(
-        colors: [
-          Colors.blue[100],Colors.cyan[200]
-        ],
-        begin: FractionalOffset.topCenter,
-        end: FractionalOffset.bottomCenter
-      )
+        color: Colors.blue[100],
+        borderRadius: BorderRadius.circular(10.0),
+        gradient: LinearGradient(
+            colors: [
+              darkAccent,lightAccent
+            ],
+            begin: FractionalOffset.topCenter,
+            end: FractionalOffset.bottomCenter
+        )
     );
     return Container(
       margin: EdgeInsets.only(right: 30.0),
@@ -222,11 +102,7 @@ class _HomePageState extends State<HomePage> {
             //right: 30.0,
             child: GestureDetector(
               onTap: (){
-              //print("presiona");
-              setState(() {
-                nropgaux = i;
-                _cuerpoAux(nropgaux);
-              });
+                Navigator.of(context).pushNamed(page);
               },
               child: Container(
                 decoration: _bxdecoration,
@@ -239,7 +115,7 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text(txt,style: TextStyle(color: Colors.black87,fontSize: 12.0),textAlign: TextAlign.center,),
+                    Text(txt,style: TextStyle(color: lightPrimary,fontSize: 12.0),textAlign: TextAlign.center,),
                     //Text("investigacion",style: TextStyle(color: Colors.white),)
                   ],
                 ),
@@ -247,26 +123,26 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           CircleAvatar(
-            backgroundColor: Colors.greenAccent[700],
-             child: Container(),
-             radius: 21.0,
-             //color: Colors.red,
+            backgroundColor: badgeColor,
+            child: Container(),
+            radius: 21.0,
+            //color: Colors.red,
 //           width: 150.0,
 
-            ),
+          ),
           Positioned(
             left: 1.0,
             top: 1.0,
             child: CircleAvatar(
-              
+
               backgroundColor: Colors.white,
-               child: Image.asset('assets/logos/personaLupa.png',fit: BoxFit.cover,),
-               //color: Colors.red,
+              child: Image.asset('assets/logos/personaLupa.png',fit: BoxFit.cover,),
+              //color: Colors.red,
 //           width: 150.0,
 
-              ),
+            ),
           ),
-           
+
         ],
       ),
     );
