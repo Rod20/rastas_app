@@ -49,10 +49,10 @@ class _PortalPageState extends State<PortalPage> {
                 Image.asset('assets/logos/dr.png'),
                 Expanded(
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
-                      Text("Guia basica de",style: _txtStyle,),
-                      Text("investigacion",style: _txtStyle,)
+                      Text("Guia basica de investigación",style: _txtStyle,),
                     ],
                   ),
                 )
