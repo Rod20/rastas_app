@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:rastas_app/ui/resources/app_colors.dart';
-import 'package:rastas_app/ui/screens/cuantoAprendiste/cuanto_aprendiste.dart';
-import 'package:rastas_app/ui/screens/qualitativeDesign/disenio_cualitativo.dart';
-import 'package:rastas_app/ui/screens/quantitativeDesign/disenio_cuantitativo.dart';
-import 'package:rastas_app/ui/screens/researchPrinciples/research_principles.dart';
-import 'package:rastas_app/ui/screens/verbs/verbs.dart';
 
 class HomePage extends StatelessWidget {
   @override

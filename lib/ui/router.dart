@@ -26,7 +26,7 @@ class Router {
         return MaterialPageRoute(builder: (_) => ResearchPrinciples());
       case 'profile':
         return MaterialPageRoute(builder: (_) => Profile());
-      case 'verbos':
+      case 'verbs':
         return MaterialPageRoute(builder: (_) => Verbs());
       case 'learning':
         return MaterialPageRoute(builder: (_) => CuantoAprendiste());
