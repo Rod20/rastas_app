@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rastas_app/ui/resources/app_colors.dart';
 import 'package:rastas_app/ui/screens/cuantoAprendiste/cuanto_aprendiste.dart';
 import 'package:rastas_app/ui/screens/qualitativeDesign/disenio_cualitativo.dart';
 import 'package:rastas_app/ui/screens/quantitativeDesign/disenio_cuantitativo.dart';
@@ -21,7 +22,7 @@ class HomePage extends StatelessWidget {
         borderRadius: BorderRadius.horizontal(left: Radius.circular(30.0),right: Radius.circular(5.0)),
         gradient: LinearGradient(
             colors: [
-              Colors.blue,Colors.cyan[200]
+              darkAccent,lightAccent
             ],
             begin: FractionalOffset.topCenter,
             end: FractionalOffset.bottomCenter
@@ -87,7 +88,7 @@ class HomePage extends StatelessWidget {
         borderRadius: BorderRadius.circular(10.0),
         gradient: LinearGradient(
             colors: [
-              Colors.blue[100],Colors.cyan[200]
+              darkAccent,lightAccent
             ],
             begin: FractionalOffset.topCenter,
             end: FractionalOffset.bottomCenter
@@ -114,7 +115,7 @@ class HomePage extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text(txt,style: TextStyle(color: Colors.black87,fontSize: 12.0),textAlign: TextAlign.center,),
+                    Text(txt,style: TextStyle(color: lightPrimary,fontSize: 12.0),textAlign: TextAlign.center,),
                     //Text("investigacion",style: TextStyle(color: Colors.white),)
                   ],
                 ),
@@ -122,7 +123,7 @@ class HomePage extends StatelessWidget {
             ),
           ),
           CircleAvatar(
-            backgroundColor: Colors.greenAccent[700],
+            backgroundColor: badgeColor,
             child: Container(),
             radius: 21.0,
             //color: Colors.red,

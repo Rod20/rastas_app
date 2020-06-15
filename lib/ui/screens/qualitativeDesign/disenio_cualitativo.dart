@@ -28,7 +28,7 @@ Se enfoca a comprender y profundizar los fenómenos, explorándolos desde la per
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: ToolbarHeader(
-          mToolbarName: "Diseño Cuantitativo"
+          mToolbarName: "Diseño Cualitativo"
       ),
       body: SingleChildScrollView(
         child: Container(
