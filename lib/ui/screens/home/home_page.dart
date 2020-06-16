@@ -12,6 +12,7 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _item(String texto, String page, BuildContext context){
+    final size = MediaQuery.of(context).size;
     final _bxdecoration = BoxDecoration(
         color: Colors.blue[900],
         borderRadius: BorderRadius.horizontal(left: Radius.circular(30.0),right: Radius.circular(5.0)),
@@ -31,15 +32,16 @@ class HomePage extends StatelessWidget {
 
         children: <Widget>[
           Container(
-            child: Image.asset('assets/logos/dr.png',height: 70.0,),
+            child: Image.asset('assets/logos/dr.png'),
             //color: Colors.red,
-            width: 150.0,
+            width: size.width*0.3,
+            padding: EdgeInsets.only(left: 10.0),
           ),
           Container(
             decoration: _bxdecoration,
-            padding: EdgeInsets.symmetric(vertical: 10.0),
-            height: 65.0,
-            width: 200.0,
+            //padding: EdgeInsets.symmetric(vertical: 10.0),
+            height: size.height * 0.12,
+            width: size.width * 0.6,
             //color: Colors.blue,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -65,10 +67,12 @@ class HomePage extends StatelessWidget {
           _item("Diseño cuantitativo",'des_quan',context),
           SizedBox(height: 20.0),
           _item("Diseño Cualitativo",'des_qual',context),
+          SizedBox(height: 10.0),
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               _btnItem2("Verbos",'verbs',context),
+              SizedBox(height: 10.0),
               _btnItem2("Cuanto aprendiste?",'learning',context),
             ],
           ),
@@ -78,6 +82,7 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _btnItem2(String txt, String page,BuildContext context) {
+    final size = MediaQuery.of(context).size;
     final _bxdecoration = BoxDecoration(
         color: Colors.blue[100],
         borderRadius: BorderRadius.circular(10.0),
@@ -104,7 +109,7 @@ class HomePage extends StatelessWidget {
                 //color: Colors.blueAccent,
                 margin: EdgeInsets.only(left: 30.0,top: 10.0),
                 padding: EdgeInsets.symmetric( horizontal: 15.0),
-                height: 35.0,
+                height: size.height*0.08,
                 //width: double.minPositive,
                 //color: Colors.blue,
                 child: Column(
