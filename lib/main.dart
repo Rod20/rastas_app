@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'Material App',
-      initialRoute: 'portal_page',
+      initialRoute: 'splash_page',
       theme: AppThemes.rastasTheme(),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: Router.generateRoute,

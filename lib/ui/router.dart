@@ -6,6 +6,7 @@ import 'package:rastas_app/ui/screens/profile/profile.dart';
 import 'package:rastas_app/ui/screens/qualitativeDesign/disenio_cualitativo.dart';
 import 'package:rastas_app/ui/screens/quantitativeDesign/disenio_cuantitativo.dart';
 import 'package:rastas_app/ui/screens/researchPrinciples/research_principles.dart';
+import 'package:rastas_app/ui/screens/splash/splashScreen.dart';
 import 'package:rastas_app/ui/screens/verbs/verbs.dart';
 
 class Router {
@@ -13,7 +14,9 @@ class Router {
 
     switch (settings.name) {
       //case '/':
-        //return MaterialPageRoute(builder: (_) => InitPage()); // esto es para el splash
+        //return MaterialPageRoute(builder: (_) => InitPage()); // esto es para el splash SplashPage
+      case 'splash_page':
+        return MaterialPageRoute(builder: (_) => SplashPage());
       case 'portal_page':
         return MaterialPageRoute(builder: (_) => PortalPage());
       case 'home':
