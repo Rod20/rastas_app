@@ -16,29 +16,36 @@ class _VerbsState extends State<Verbs> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Stepper(
-          steps: _mySteps(),
-          currentStep: this._currentStep,
-          onStepTapped: (step){
-            setState(() {
-              this._currentStep = step;
-            });
-          },
-          onStepCancel: (){
-            Navigator.of(context).pushNamed("portal_page");
-            setState(() {
-              
-            });
-          },
-          onStepContinue: (){
-            setState(() {
-              if(this._currentStep<this._mySteps().length -1 ){
-                this._currentStep = this._currentStep+1;
-              }else{
-                _currentStep=0;
-              }
-            });
-          },
+        body: Theme(
+          data: ThemeData(
+            primaryColor: buttonColor
+          ),
+          child: Stepper(
+            type: StepperType.horizontal,
+            
+            steps: _mySteps(),
+            currentStep: this._currentStep,
+            onStepTapped: (step){
+              setState(() {
+                this._currentStep = step;
+              });
+            },
+            onStepCancel: (){
+              Navigator.of(context).pushNamed("portal_page");
+              setState(() {
+                
+              });
+            },
+            onStepContinue: (){
+              setState(() {
+                if(this._currentStep<this._mySteps().length -1 ){
+                  this._currentStep = this._currentStep+1;
+                }else{
+                  _currentStep=0;
+                }
+              });
+            },
+          ),
         ),
       ),
     );
@@ -47,7 +54,7 @@ class _VerbsState extends State<Verbs> {
   List<Step> _mySteps() {
     List<Step> _step = [
       Step(
-        title: Text("Paso 1"), 
+        title: Text(""), 
         content: Column(
           children: <Widget>[ListTile(
           title: FittedBox(
@@ -60,7 +67,7 @@ class _VerbsState extends State<Verbs> {
         isActive: _currentStep >= 0,
       ),
       Step(
-        title: Text("Paso 2"), 
+        title: Text(""), 
         content: Column(
           children: <Widget>[ListTile(
           title: FittedBox(
@@ -73,7 +80,7 @@ class _VerbsState extends State<Verbs> {
         isActive: _currentStep >= 1,
       ),
       Step(
-        title: Text("Paso 3"), 
+        title: Text(""), 
         content: Column(
           children: <Widget>[ListTile(
           title: FittedBox(
@@ -86,7 +93,7 @@ class _VerbsState extends State<Verbs> {
         isActive: _currentStep >= 2,
       ),
       Step(
-        title: Text("Paso 4"), 
+        title: Text(""), 
         content: Column(
           children: <Widget>[ListTile(
           title: FittedBox(
@@ -99,7 +106,7 @@ class _VerbsState extends State<Verbs> {
         isActive: _currentStep >= 3,
       ),
       Step(
-        title: Text("Paso 5"), 
+        title: Text(""), 
         content: Column(
           children: <Widget>[ListTile(
           title: FittedBox(
@@ -112,7 +119,7 @@ class _VerbsState extends State<Verbs> {
         isActive: _currentStep >= 4,
       ),
       Step(
-        title: Text("Paso 6"), 
+        title: Text(""), 
         content: Column(
           children: <Widget>[ListTile(
           title: FittedBox(
