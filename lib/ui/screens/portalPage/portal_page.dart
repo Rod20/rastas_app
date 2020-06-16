@@ -31,6 +31,7 @@ class _PortalPageState extends State<PortalPage> {
     return PreferredSize(
         preferredSize: Size.fromHeight(54.0),
         child: Container(
+            margin: EdgeInsets.only(top: 16.0),
             decoration: BoxDecoration(
                 color: darkAccent,
                 gradient: LinearGradient(
