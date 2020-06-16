@@ -25,7 +25,8 @@ class _PortalPageState extends State<PortalPage> {
   Widget _appBar(){
     final _txtStyle = TextStyle(
       inherit: true,
-      fontSize: 15.0,
+      //fontSize: 15.0,
+      fontWeight: FontWeight.bold,
       color: Colors.white,
     );
     return PreferredSize(
@@ -42,19 +43,17 @@ class _PortalPageState extends State<PortalPage> {
                 )
             ),
             //color: Color.fromRGBO(226,225,223, 1.0),
-            padding: EdgeInsets.only(bottom: 20.0,left: 20.0,right: 20.0,top: 25.0),
+            padding: EdgeInsets.only(bottom: 5.0,left: 20.0,right: 20.0,top: 20.0),
             width: double.infinity,
             child: Row(
               children: <Widget>[
                 Image.asset('assets/logos/dr.png'),
                 Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: <Widget>[
-                      Text("Guia basica de investigación",style: _txtStyle,),
-                    ],
-                  ),
+                  child: ListTile(
+                        title: FittedBox(
+                          child: Text("GUIA BASICA DE INVESTIGACION",style: _txtStyle,),
+                        ),
+                      ),
                 )
               ],
             )
