@@ -20,6 +20,7 @@ class ToolbarHeader extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: darkAccent,
+      brightness: Brightness.dark,
       elevation: 0,
       centerTitle: true,
       iconTheme: IconThemeData(color: lightPrimary),

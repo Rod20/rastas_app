@@ -19,37 +19,40 @@ class SocialNetworkProfile extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          _socialMedia(context,"assets/icons/social/facebook.svg","www.facebook.com"),
-          _socialMedia(context,"assets/icons/social/whatsapp.svg","+591 77 967 277"),
-          _socialMedia(context,"assets/icons/social/youtube.svg","www.youtube.com"),
-          _socialMedia(context,"assets/icons/social/instagram.svg","www.instagram.com"),
-          _socialMedia(context,"assets/icons/social/twitter.svg","www.twitter.com"),
-          _socialMedia(context,"assets/icons/social/linkedin.svg","www.linkedin.com"),
-          _socialMedia(context,"assets/icons/social/steam.svg","www.steam.com"),
-          _socialMedia(context,"assets/icons/social/pinterest.svg","www.pinterest.com"),
+          _socialMedia(context,"assets/icons/social/facebook.svg","www.facebook.com/elias.moron",true),
+          _socialMedia(context,"assets/icons/social/whatsapp.svg","+591 70 185 764",true),
+          _socialMedia(context,"assets/icons/social/flipsnack.png", "www.flipsnack.com/elias1795/",false),
+          _socialMedia(context,"assets/icons/social/youtube.svg","www.youtube.com",true),
+          _socialMedia(context,"assets/icons/social/instagram.svg","www.instagram.com",true),
+          _socialMedia(context,"assets/icons/social/twitter.svg","www.twitter.com",true),
+          _socialMedia(context,"assets/icons/social/linkedin.svg","www.linkedin.com",true),
+          _socialMedia(context,"assets/icons/social/steam.svg","www.steam.com",true),
+          _socialMedia(context,"assets/icons/social/pinterest.svg","www.pinterest.com",true),
         ],
       ),
     );
   }
 
-  Widget _socialMedia(BuildContext context, String icon, String textSocialLink){
+  Widget _socialMedia(BuildContext context, String icon, String textSocialLink, bool isSvg){
     return Row(
       children: <Widget>[
-        _logoSocialMedia(icon),
-        _infoSocialMedia(context,textSocialLink)
+        _logoSocialMedia(isSvg, icon),
+        Expanded(child: _infoSocialMedia(context,textSocialLink))
       ],
     );
   }
 
-  Widget _logoSocialMedia(String icon) {
+  Widget _logoSocialMedia(bool isSvg, String icon) {
     return Container(
       padding: EdgeInsets.all(10.0),
-      child: icon != null
+      child: isSvg
+          ? icon != null
           ? SvgPicture.asset(
         icon,
         height: 40.0,
       )
-          : null,
+          : null
+          : Image.asset(icon,height: 30.0,),
     );
   }
 
@@ -62,7 +65,7 @@ class SocialNetworkProfile extends StatelessWidget {
             TextStyle(
               color: Colors.black87,
               fontWeight: FontWeight.normal,
-              fontSize: 16.0,
+              fontSize: 14.0,
             ),
           ),
         )
