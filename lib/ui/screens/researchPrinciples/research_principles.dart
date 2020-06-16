@@ -3,6 +3,11 @@ import 'package:rastas_app/ui/widgets/toolbar_header.dart';
 
 class ResearchPrinciples extends StatelessWidget {
 
+  String _whatInvestigation = "¿Qué es Investigación?";
+  String _description = """La investigación es un conjunto de procesos sistemáticos, críticos y empíricos que se aplican al estudio de un fenómeno. Roberto Hernández Sampieri. 
+
+La definición que presenta la Real Academia Española (RAE) sobre la palabra investigar (vocablo que tiene su origen en el latín investigare), este verbo se refiere al acto de llevar a cabo estrategias para descubrir algo. También permite hacer mención al conjunto de actividades de índole intelectual y experimental de carácter sistemático, con la intención de incrementar los conocimientos sobre un determinado asunto.""";
+
   String _title = "Teoría del diseño cuantitativo";
   String _concept = """Los estudios cuantitativos siguen un patrón predecible y estructurado el proceso. En una investigación cualitativa se pretende explicar y predecir los fenómenos investigados, buscando regularidades y relaciones causales entre elementos. (p.18)
 
@@ -23,6 +28,8 @@ Es por ello que, tanto los estudios científicos positivistas como la investigac
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              _titleText(_whatInvestigation, context),
+              _bodyText(_description, context),
               _titleText(_title, context),
               _bodyText(_concept, context),
             ],
