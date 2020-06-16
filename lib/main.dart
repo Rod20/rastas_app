@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Material App',
-      initialRoute: 'portal_page',
+      initialRoute: 'splash_page',
       theme: AppThemes.rastasTheme(),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: Router.generateRoute,
