@@ -13,7 +13,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile>
-    with SingleTickerProviderStateMixin{
+  with SingleTickerProviderStateMixin{
   TabController _tabController;
   TabBloc _tabBloc = new TabBloc();
   final int _defaultIndex = 0;
